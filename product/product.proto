@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package product;
+
+option go_package = "./;product";
+
+service Product {
+    rpc GetFilmDuration(GetFilmDurationReq) returns (GetFilmDurationRes);
+    rpc GetPriceOfFAB(GetPriceOfFABReq) returns (GetPriceOfFABRes);
+    rpc CheckFABExist(CheckFABExistReq) returns (CheckFABExistRes);
+}
+
+message GetFilmDurationReq {
+    int32 filmId = 1;
+}
+
+message GetFilmDurationRes {
+    string filmDuration = 1;
+}
+
+message GetPriceOfFABReq {
+    int32 fABId = 1;
+}
+
+message GetPriceOfFABRes {
+    int32 price = 1;
+}
+
+message CheckFABExistReq {
+    int32 fABId = 1; 
+}
+
+message CheckFABExistRes {
+    string responseMessage = 1;
+}
+
