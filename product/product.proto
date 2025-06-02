@@ -8,6 +8,7 @@ service Product {
     rpc GetFilmDuration(GetFilmDurationReq) returns (GetFilmDurationRes);
     rpc GetPriceOfFAB(GetPriceOfFABReq) returns (GetPriceOfFABRes);
     rpc CheckFABExist(CheckFABExistReq) returns (CheckFABExistRes);
+    rpc GetFilm(GetFilmReq) returns (GetFilmRes);
 }
 
 message GetFilmDurationReq {
@@ -32,5 +33,19 @@ message CheckFABExistReq {
 
 message CheckFABExistRes {
     string responseMessage = 1;
+}
+
+message GetFilmReq {
+    int32 filmId = 1;
+}
+
+message GetFilmRes {
+    int32 filmId = 1;
+    string title = 2;
+    string description = 3;
+    string release_date = 4;
+    string posterUrl = 5;
+    string genres = 6;
+    string duration = 7;
 }
 

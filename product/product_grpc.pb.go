@@ -22,6 +22,7 @@ const (
 	Product_GetFilmDuration_FullMethodName = "/product.Product/GetFilmDuration"
 	Product_GetPriceOfFAB_FullMethodName   = "/product.Product/GetPriceOfFAB"
 	Product_CheckFABExist_FullMethodName   = "/product.Product/CheckFABExist"
+	Product_GetFilm_FullMethodName         = "/product.Product/GetFilm"
 )
 
 // ProductClient is the client API for Product service.
@@ -31,6 +32,7 @@ type ProductClient interface {
 	GetFilmDuration(ctx context.Context, in *GetFilmDurationReq, opts ...grpc.CallOption) (*GetFilmDurationRes, error)
 	GetPriceOfFAB(ctx context.Context, in *GetPriceOfFABReq, opts ...grpc.CallOption) (*GetPriceOfFABRes, error)
 	CheckFABExist(ctx context.Context, in *CheckFABExistReq, opts ...grpc.CallOption) (*CheckFABExistRes, error)
+	GetFilm(ctx context.Context, in *GetFilmReq, opts ...grpc.CallOption) (*GetFilmRes, error)
 }
 
 type productClient struct {
@@ -71,6 +73,16 @@ func (c *productClient) CheckFABExist(ctx context.Context, in *CheckFABExistReq,
 	return out, nil
 }
 
+func (c *productClient) GetFilm(ctx context.Context, in *GetFilmReq, opts ...grpc.CallOption) (*GetFilmRes, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetFilmRes)
+	err := c.cc.Invoke(ctx, Product_GetFilm_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ProductServer is the server API for Product service.
 // All implementations must embed UnimplementedProductServer
 // for forward compatibility.
@@ -78,6 +90,7 @@ type ProductServer interface {
 	GetFilmDuration(context.Context, *GetFilmDurationReq) (*GetFilmDurationRes, error)
 	GetPriceOfFAB(context.Context, *GetPriceOfFABReq) (*GetPriceOfFABRes, error)
 	CheckFABExist(context.Context, *CheckFABExistReq) (*CheckFABExistRes, error)
+	GetFilm(context.Context, *GetFilmReq) (*GetFilmRes, error)
 	mustEmbedUnimplementedProductServer()
 }
 
@@ -96,6 +109,9 @@ func (UnimplementedProductServer) GetPriceOfFAB(context.Context, *GetPriceOfFABR
 }
 func (UnimplementedProductServer) CheckFABExist(context.Context, *CheckFABExistReq) (*CheckFABExistRes, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CheckFABExist not implemented")
+}
+func (UnimplementedProductServer) GetFilm(context.Context, *GetFilmReq) (*GetFilmRes, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetFilm not implemented")
 }
 func (UnimplementedProductServer) mustEmbedUnimplementedProductServer() {}
 func (UnimplementedProductServer) testEmbeddedByValue()                 {}
@@ -172,6 +188,24 @@ func _Product_CheckFABExist_Handler(srv interface{}, ctx context.Context, dec fu
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Product_GetFilm_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetFilmReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ProductServer).GetFilm(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Product_GetFilm_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ProductServer).GetFilm(ctx, req.(*GetFilmReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Product_ServiceDesc is the grpc.ServiceDesc for Product service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -190,6 +224,10 @@ var Product_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "CheckFABExist",
 			Handler:    _Product_CheckFABExist_Handler,
+		},
+		{
+			MethodName: "GetFilm",
+			Handler:    _Product_GetFilm_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

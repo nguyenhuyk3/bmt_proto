@@ -285,6 +285,142 @@ func (x *CheckFABExistRes) GetResponseMessage() string {
 	return ""
 }
 
+type GetFilmReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	FilmId        int32                  `protobuf:"varint,1,opt,name=filmId,proto3" json:"filmId,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetFilmReq) Reset() {
+	*x = GetFilmReq{}
+	mi := &file_product_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetFilmReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetFilmReq) ProtoMessage() {}
+
+func (x *GetFilmReq) ProtoReflect() protoreflect.Message {
+	mi := &file_product_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetFilmReq.ProtoReflect.Descriptor instead.
+func (*GetFilmReq) Descriptor() ([]byte, []int) {
+	return file_product_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *GetFilmReq) GetFilmId() int32 {
+	if x != nil {
+		return x.FilmId
+	}
+	return 0
+}
+
+type GetFilmRes struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	FilmId        int32                  `protobuf:"varint,1,opt,name=filmId,proto3" json:"filmId,omitempty"`
+	Title         string                 `protobuf:"bytes,2,opt,name=title,proto3" json:"title,omitempty"`
+	Description   string                 `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
+	ReleaseDate   string                 `protobuf:"bytes,4,opt,name=release_date,json=releaseDate,proto3" json:"release_date,omitempty"`
+	PosterUrl     string                 `protobuf:"bytes,5,opt,name=posterUrl,proto3" json:"posterUrl,omitempty"`
+	Genres        string                 `protobuf:"bytes,6,opt,name=genres,proto3" json:"genres,omitempty"`
+	Duration      string                 `protobuf:"bytes,7,opt,name=duration,proto3" json:"duration,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetFilmRes) Reset() {
+	*x = GetFilmRes{}
+	mi := &file_product_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetFilmRes) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetFilmRes) ProtoMessage() {}
+
+func (x *GetFilmRes) ProtoReflect() protoreflect.Message {
+	mi := &file_product_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetFilmRes.ProtoReflect.Descriptor instead.
+func (*GetFilmRes) Descriptor() ([]byte, []int) {
+	return file_product_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *GetFilmRes) GetFilmId() int32 {
+	if x != nil {
+		return x.FilmId
+	}
+	return 0
+}
+
+func (x *GetFilmRes) GetTitle() string {
+	if x != nil {
+		return x.Title
+	}
+	return ""
+}
+
+func (x *GetFilmRes) GetDescription() string {
+	if x != nil {
+		return x.Description
+	}
+	return ""
+}
+
+func (x *GetFilmRes) GetReleaseDate() string {
+	if x != nil {
+		return x.ReleaseDate
+	}
+	return ""
+}
+
+func (x *GetFilmRes) GetPosterUrl() string {
+	if x != nil {
+		return x.PosterUrl
+	}
+	return ""
+}
+
+func (x *GetFilmRes) GetGenres() string {
+	if x != nil {
+		return x.Genres
+	}
+	return ""
+}
+
+func (x *GetFilmRes) GetDuration() string {
+	if x != nil {
+		return x.Duration
+	}
+	return ""
+}
+
 var File_product_proto protoreflect.FileDescriptor
 
 const file_product_proto_rawDesc = "" +
@@ -301,11 +437,24 @@ const file_product_proto_rawDesc = "" +
 	"\x10CheckFABExistReq\x12\x14\n" +
 	"\x05fABId\x18\x01 \x01(\x05R\x05fABId\"<\n" +
 	"\x10CheckFABExistRes\x12(\n" +
-	"\x0fresponseMessage\x18\x01 \x01(\tR\x0fresponseMessage2\xe4\x01\n" +
+	"\x0fresponseMessage\x18\x01 \x01(\tR\x0fresponseMessage\"$\n" +
+	"\n" +
+	"GetFilmReq\x12\x16\n" +
+	"\x06filmId\x18\x01 \x01(\x05R\x06filmId\"\xd1\x01\n" +
+	"\n" +
+	"GetFilmRes\x12\x16\n" +
+	"\x06filmId\x18\x01 \x01(\x05R\x06filmId\x12\x14\n" +
+	"\x05title\x18\x02 \x01(\tR\x05title\x12 \n" +
+	"\vdescription\x18\x03 \x01(\tR\vdescription\x12!\n" +
+	"\frelease_date\x18\x04 \x01(\tR\vreleaseDate\x12\x1c\n" +
+	"\tposterUrl\x18\x05 \x01(\tR\tposterUrl\x12\x16\n" +
+	"\x06genres\x18\x06 \x01(\tR\x06genres\x12\x1a\n" +
+	"\bduration\x18\a \x01(\tR\bduration2\x99\x02\n" +
 	"\aProduct\x12K\n" +
 	"\x0fGetFilmDuration\x12\x1b.product.GetFilmDurationReq\x1a\x1b.product.GetFilmDurationRes\x12E\n" +
 	"\rGetPriceOfFAB\x12\x19.product.GetPriceOfFABReq\x1a\x19.product.GetPriceOfFABRes\x12E\n" +
-	"\rCheckFABExist\x12\x19.product.CheckFABExistReq\x1a\x19.product.CheckFABExistResB\fZ\n" +
+	"\rCheckFABExist\x12\x19.product.CheckFABExistReq\x1a\x19.product.CheckFABExistRes\x123\n" +
+	"\aGetFilm\x12\x13.product.GetFilmReq\x1a\x13.product.GetFilmResB\fZ\n" +
 	"./;productb\x06proto3"
 
 var (
@@ -320,7 +469,7 @@ func file_product_proto_rawDescGZIP() []byte {
 	return file_product_proto_rawDescData
 }
 
-var file_product_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
+var file_product_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
 var file_product_proto_goTypes = []any{
 	(*GetFilmDurationReq)(nil), // 0: product.GetFilmDurationReq
 	(*GetFilmDurationRes)(nil), // 1: product.GetFilmDurationRes
@@ -328,16 +477,20 @@ var file_product_proto_goTypes = []any{
 	(*GetPriceOfFABRes)(nil),   // 3: product.GetPriceOfFABRes
 	(*CheckFABExistReq)(nil),   // 4: product.CheckFABExistReq
 	(*CheckFABExistRes)(nil),   // 5: product.CheckFABExistRes
+	(*GetFilmReq)(nil),         // 6: product.GetFilmReq
+	(*GetFilmRes)(nil),         // 7: product.GetFilmRes
 }
 var file_product_proto_depIdxs = []int32{
 	0, // 0: product.Product.GetFilmDuration:input_type -> product.GetFilmDurationReq
 	2, // 1: product.Product.GetPriceOfFAB:input_type -> product.GetPriceOfFABReq
 	4, // 2: product.Product.CheckFABExist:input_type -> product.CheckFABExistReq
-	1, // 3: product.Product.GetFilmDuration:output_type -> product.GetFilmDurationRes
-	3, // 4: product.Product.GetPriceOfFAB:output_type -> product.GetPriceOfFABRes
-	5, // 5: product.Product.CheckFABExist:output_type -> product.CheckFABExistRes
-	3, // [3:6] is the sub-list for method output_type
-	0, // [0:3] is the sub-list for method input_type
+	6, // 3: product.Product.GetFilm:input_type -> product.GetFilmReq
+	1, // 4: product.Product.GetFilmDuration:output_type -> product.GetFilmDurationRes
+	3, // 5: product.Product.GetPriceOfFAB:output_type -> product.GetPriceOfFABRes
+	5, // 6: product.Product.CheckFABExist:output_type -> product.CheckFABExistRes
+	7, // 7: product.Product.GetFilm:output_type -> product.GetFilmRes
+	4, // [4:8] is the sub-list for method output_type
+	0, // [0:4] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
 	0, // [0:0] is the sub-list for extension extendee
 	0, // [0:0] is the sub-list for field type_name
@@ -354,7 +507,7 @@ func file_product_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_product_proto_rawDesc), len(file_product_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   6,
+			NumMessages:   8,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
