@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package showtime;
+
+option go_package = "./;showtime";
+
+service Showtime {
+    rpc GetCinemaByShowtimeId(GetCinemaByShowtimeIdReq) returns (GetCinemaByShowtimeIdRes);
+}
+
+message GetCinemaByShowtimeIdReq {
+    int32 showtimeId = 1;
+}
+
+message GetCinemaByShowtimeIdRes {
+    string name = 1;
+    string city = 2;
+    string location = 3;
+}
+
+
+
+
