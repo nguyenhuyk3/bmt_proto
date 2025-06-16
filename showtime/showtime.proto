@@ -5,19 +5,21 @@ package showtime;
 option go_package = "./;showtime";
 
 service Showtime {
-    rpc GetCinemaByShowtimeId(GetCinemaByShowtimeIdReq) returns (GetCinemaByShowtimeIdRes);
+    rpc GetSomeInformationForTicket(GetSomeInformationForTicketReq) returns (GetSomeInformationForTicketRes);
 }
 
-message GetCinemaByShowtimeIdReq {
+message GetSomeInformationForTicketReq {
     int32 showtimeId = 1;
+    repeated int32 seatIds = 2;
 }
 
-message GetCinemaByShowtimeIdRes {
-    string name = 1;
+message GetSomeInformationForTicketRes {
+    string cinemaName = 1;
     string city = 2;
-    string location = 3;
+    string roomName = 3;
+    string seats = 4;
+    int32 filmId = 5;
 }
-
 
 
 

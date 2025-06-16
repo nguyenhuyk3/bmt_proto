@@ -7,6 +7,7 @@ option go_package = "./;product";
 service Product {
     rpc GetFilmDuration(GetFilmDurationReq) returns (GetFilmDurationRes);
     rpc GetPriceOfFAB(GetPriceOfFABReq) returns (GetPriceOfFABRes);
+    rpc GetFABsByIds(GetFABsByIdsReq) returns (GetFABsByIdsRes);
     rpc CheckFABExist(CheckFABExistReq) returns (CheckFABExistRes);
     rpc GetFilm(GetFilmReq) returns (GetFilmRes);
 }
@@ -25,6 +26,14 @@ message GetPriceOfFABReq {
 
 message GetPriceOfFABRes {
     int32 price = 1;
+}
+
+message GetFABsByIdsReq {
+    repeated int32 fABId = 1;
+}
+
+message GetFABsByIdsRes {
+    repeated string name = 1;
 }
 
 message CheckFABExistReq {

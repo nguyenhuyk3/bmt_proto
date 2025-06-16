@@ -19,14 +19,14 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	Showtime_GetCinemaByShowtimeId_FullMethodName = "/showtime.Showtime/GetCinemaByShowtimeId"
+	Showtime_GetSomeInformationForTicket_FullMethodName = "/showtime.Showtime/GetSomeInformationForTicket"
 )
 
 // ShowtimeClient is the client API for Showtime service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type ShowtimeClient interface {
-	GetCinemaByShowtimeId(ctx context.Context, in *GetCinemaByShowtimeIdReq, opts ...grpc.CallOption) (*GetCinemaByShowtimeIdRes, error)
+	GetSomeInformationForTicket(ctx context.Context, in *GetSomeInformationForTicketReq, opts ...grpc.CallOption) (*GetSomeInformationForTicketRes, error)
 }
 
 type showtimeClient struct {
@@ -37,10 +37,10 @@ func NewShowtimeClient(cc grpc.ClientConnInterface) ShowtimeClient {
 	return &showtimeClient{cc}
 }
 
-func (c *showtimeClient) GetCinemaByShowtimeId(ctx context.Context, in *GetCinemaByShowtimeIdReq, opts ...grpc.CallOption) (*GetCinemaByShowtimeIdRes, error) {
+func (c *showtimeClient) GetSomeInformationForTicket(ctx context.Context, in *GetSomeInformationForTicketReq, opts ...grpc.CallOption) (*GetSomeInformationForTicketRes, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(GetCinemaByShowtimeIdRes)
-	err := c.cc.Invoke(ctx, Showtime_GetCinemaByShowtimeId_FullMethodName, in, out, cOpts...)
+	out := new(GetSomeInformationForTicketRes)
+	err := c.cc.Invoke(ctx, Showtime_GetSomeInformationForTicket_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -51,7 +51,7 @@ func (c *showtimeClient) GetCinemaByShowtimeId(ctx context.Context, in *GetCinem
 // All implementations must embed UnimplementedShowtimeServer
 // for forward compatibility.
 type ShowtimeServer interface {
-	GetCinemaByShowtimeId(context.Context, *GetCinemaByShowtimeIdReq) (*GetCinemaByShowtimeIdRes, error)
+	GetSomeInformationForTicket(context.Context, *GetSomeInformationForTicketReq) (*GetSomeInformationForTicketRes, error)
 	mustEmbedUnimplementedShowtimeServer()
 }
 
@@ -62,8 +62,8 @@ type ShowtimeServer interface {
 // pointer dereference when methods are called.
 type UnimplementedShowtimeServer struct{}
 
-func (UnimplementedShowtimeServer) GetCinemaByShowtimeId(context.Context, *GetCinemaByShowtimeIdReq) (*GetCinemaByShowtimeIdRes, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetCinemaByShowtimeId not implemented")
+func (UnimplementedShowtimeServer) GetSomeInformationForTicket(context.Context, *GetSomeInformationForTicketReq) (*GetSomeInformationForTicketRes, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetSomeInformationForTicket not implemented")
 }
 func (UnimplementedShowtimeServer) mustEmbedUnimplementedShowtimeServer() {}
 func (UnimplementedShowtimeServer) testEmbeddedByValue()                  {}
@@ -86,20 +86,20 @@ func RegisterShowtimeServer(s grpc.ServiceRegistrar, srv ShowtimeServer) {
 	s.RegisterService(&Showtime_ServiceDesc, srv)
 }
 
-func _Showtime_GetCinemaByShowtimeId_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetCinemaByShowtimeIdReq)
+func _Showtime_GetSomeInformationForTicket_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetSomeInformationForTicketReq)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ShowtimeServer).GetCinemaByShowtimeId(ctx, in)
+		return srv.(ShowtimeServer).GetSomeInformationForTicket(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: Showtime_GetCinemaByShowtimeId_FullMethodName,
+		FullMethod: Showtime_GetSomeInformationForTicket_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ShowtimeServer).GetCinemaByShowtimeId(ctx, req.(*GetCinemaByShowtimeIdReq))
+		return srv.(ShowtimeServer).GetSomeInformationForTicket(ctx, req.(*GetSomeInformationForTicketReq))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -112,8 +112,8 @@ var Showtime_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*ShowtimeServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "GetCinemaByShowtimeId",
-			Handler:    _Showtime_GetCinemaByShowtimeId_Handler,
+			MethodName: "GetSomeInformationForTicket",
+			Handler:    _Showtime_GetSomeInformationForTicket_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

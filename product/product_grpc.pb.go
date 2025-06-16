@@ -21,6 +21,7 @@ const _ = grpc.SupportPackageIsVersion9
 const (
 	Product_GetFilmDuration_FullMethodName = "/product.Product/GetFilmDuration"
 	Product_GetPriceOfFAB_FullMethodName   = "/product.Product/GetPriceOfFAB"
+	Product_GetFABsByIds_FullMethodName    = "/product.Product/GetFABsByIds"
 	Product_CheckFABExist_FullMethodName   = "/product.Product/CheckFABExist"
 	Product_GetFilm_FullMethodName         = "/product.Product/GetFilm"
 )
@@ -31,6 +32,7 @@ const (
 type ProductClient interface {
 	GetFilmDuration(ctx context.Context, in *GetFilmDurationReq, opts ...grpc.CallOption) (*GetFilmDurationRes, error)
 	GetPriceOfFAB(ctx context.Context, in *GetPriceOfFABReq, opts ...grpc.CallOption) (*GetPriceOfFABRes, error)
+	GetFABsByIds(ctx context.Context, in *GetFABsByIdsReq, opts ...grpc.CallOption) (*GetFABsByIdsRes, error)
 	CheckFABExist(ctx context.Context, in *CheckFABExistReq, opts ...grpc.CallOption) (*CheckFABExistRes, error)
 	GetFilm(ctx context.Context, in *GetFilmReq, opts ...grpc.CallOption) (*GetFilmRes, error)
 }
@@ -63,6 +65,16 @@ func (c *productClient) GetPriceOfFAB(ctx context.Context, in *GetPriceOfFABReq,
 	return out, nil
 }
 
+func (c *productClient) GetFABsByIds(ctx context.Context, in *GetFABsByIdsReq, opts ...grpc.CallOption) (*GetFABsByIdsRes, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetFABsByIdsRes)
+	err := c.cc.Invoke(ctx, Product_GetFABsByIds_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *productClient) CheckFABExist(ctx context.Context, in *CheckFABExistReq, opts ...grpc.CallOption) (*CheckFABExistRes, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(CheckFABExistRes)
@@ -89,6 +101,7 @@ func (c *productClient) GetFilm(ctx context.Context, in *GetFilmReq, opts ...grp
 type ProductServer interface {
 	GetFilmDuration(context.Context, *GetFilmDurationReq) (*GetFilmDurationRes, error)
 	GetPriceOfFAB(context.Context, *GetPriceOfFABReq) (*GetPriceOfFABRes, error)
+	GetFABsByIds(context.Context, *GetFABsByIdsReq) (*GetFABsByIdsRes, error)
 	CheckFABExist(context.Context, *CheckFABExistReq) (*CheckFABExistRes, error)
 	GetFilm(context.Context, *GetFilmReq) (*GetFilmRes, error)
 	mustEmbedUnimplementedProductServer()
@@ -106,6 +119,9 @@ func (UnimplementedProductServer) GetFilmDuration(context.Context, *GetFilmDurat
 }
 func (UnimplementedProductServer) GetPriceOfFAB(context.Context, *GetPriceOfFABReq) (*GetPriceOfFABRes, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetPriceOfFAB not implemented")
+}
+func (UnimplementedProductServer) GetFABsByIds(context.Context, *GetFABsByIdsReq) (*GetFABsByIdsRes, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetFABsByIds not implemented")
 }
 func (UnimplementedProductServer) CheckFABExist(context.Context, *CheckFABExistReq) (*CheckFABExistRes, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CheckFABExist not implemented")
@@ -170,6 +186,24 @@ func _Product_GetPriceOfFAB_Handler(srv interface{}, ctx context.Context, dec fu
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Product_GetFABsByIds_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetFABsByIdsReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ProductServer).GetFABsByIds(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Product_GetFABsByIds_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ProductServer).GetFABsByIds(ctx, req.(*GetFABsByIdsReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _Product_CheckFABExist_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(CheckFABExistReq)
 	if err := dec(in); err != nil {
@@ -220,6 +254,10 @@ var Product_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetPriceOfFAB",
 			Handler:    _Product_GetPriceOfFAB_Handler,
+		},
+		{
+			MethodName: "GetFABsByIds",
+			Handler:    _Product_GetFABsByIds_Handler,
 		},
 		{
 			MethodName: "CheckFABExist",

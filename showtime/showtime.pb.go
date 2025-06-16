@@ -21,27 +21,28 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-type GetCinemaByShowtimeIdReq struct {
+type GetSomeInformationForTicketReq struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ShowtimeId    int32                  `protobuf:"varint,1,opt,name=showtimeId,proto3" json:"showtimeId,omitempty"`
+	SeatIds       []int32                `protobuf:"varint,2,rep,packed,name=seatIds,proto3" json:"seatIds,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *GetCinemaByShowtimeIdReq) Reset() {
-	*x = GetCinemaByShowtimeIdReq{}
+func (x *GetSomeInformationForTicketReq) Reset() {
+	*x = GetSomeInformationForTicketReq{}
 	mi := &file_showtime_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *GetCinemaByShowtimeIdReq) String() string {
+func (x *GetSomeInformationForTicketReq) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetCinemaByShowtimeIdReq) ProtoMessage() {}
+func (*GetSomeInformationForTicketReq) ProtoMessage() {}
 
-func (x *GetCinemaByShowtimeIdReq) ProtoReflect() protoreflect.Message {
+func (x *GetSomeInformationForTicketReq) ProtoReflect() protoreflect.Message {
 	mi := &file_showtime_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -53,41 +54,50 @@ func (x *GetCinemaByShowtimeIdReq) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GetCinemaByShowtimeIdReq.ProtoReflect.Descriptor instead.
-func (*GetCinemaByShowtimeIdReq) Descriptor() ([]byte, []int) {
+// Deprecated: Use GetSomeInformationForTicketReq.ProtoReflect.Descriptor instead.
+func (*GetSomeInformationForTicketReq) Descriptor() ([]byte, []int) {
 	return file_showtime_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *GetCinemaByShowtimeIdReq) GetShowtimeId() int32 {
+func (x *GetSomeInformationForTicketReq) GetShowtimeId() int32 {
 	if x != nil {
 		return x.ShowtimeId
 	}
 	return 0
 }
 
-type GetCinemaByShowtimeIdRes struct {
+func (x *GetSomeInformationForTicketReq) GetSeatIds() []int32 {
+	if x != nil {
+		return x.SeatIds
+	}
+	return nil
+}
+
+type GetSomeInformationForTicketRes struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Name          string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	CinemaName    string                 `protobuf:"bytes,1,opt,name=cinemaName,proto3" json:"cinemaName,omitempty"`
 	City          string                 `protobuf:"bytes,2,opt,name=city,proto3" json:"city,omitempty"`
-	Location      string                 `protobuf:"bytes,3,opt,name=location,proto3" json:"location,omitempty"`
+	RoomName      string                 `protobuf:"bytes,3,opt,name=roomName,proto3" json:"roomName,omitempty"`
+	Seats         string                 `protobuf:"bytes,4,opt,name=seats,proto3" json:"seats,omitempty"`
+	FilmId        int32                  `protobuf:"varint,5,opt,name=filmId,proto3" json:"filmId,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *GetCinemaByShowtimeIdRes) Reset() {
-	*x = GetCinemaByShowtimeIdRes{}
+func (x *GetSomeInformationForTicketRes) Reset() {
+	*x = GetSomeInformationForTicketRes{}
 	mi := &file_showtime_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *GetCinemaByShowtimeIdRes) String() string {
+func (x *GetSomeInformationForTicketRes) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetCinemaByShowtimeIdRes) ProtoMessage() {}
+func (*GetSomeInformationForTicketRes) ProtoMessage() {}
 
-func (x *GetCinemaByShowtimeIdRes) ProtoReflect() protoreflect.Message {
+func (x *GetSomeInformationForTicketRes) ProtoReflect() protoreflect.Message {
 	mi := &file_showtime_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -99,47 +109,66 @@ func (x *GetCinemaByShowtimeIdRes) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GetCinemaByShowtimeIdRes.ProtoReflect.Descriptor instead.
-func (*GetCinemaByShowtimeIdRes) Descriptor() ([]byte, []int) {
+// Deprecated: Use GetSomeInformationForTicketRes.ProtoReflect.Descriptor instead.
+func (*GetSomeInformationForTicketRes) Descriptor() ([]byte, []int) {
 	return file_showtime_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *GetCinemaByShowtimeIdRes) GetName() string {
+func (x *GetSomeInformationForTicketRes) GetCinemaName() string {
 	if x != nil {
-		return x.Name
+		return x.CinemaName
 	}
 	return ""
 }
 
-func (x *GetCinemaByShowtimeIdRes) GetCity() string {
+func (x *GetSomeInformationForTicketRes) GetCity() string {
 	if x != nil {
 		return x.City
 	}
 	return ""
 }
 
-func (x *GetCinemaByShowtimeIdRes) GetLocation() string {
+func (x *GetSomeInformationForTicketRes) GetRoomName() string {
 	if x != nil {
-		return x.Location
+		return x.RoomName
 	}
 	return ""
+}
+
+func (x *GetSomeInformationForTicketRes) GetSeats() string {
+	if x != nil {
+		return x.Seats
+	}
+	return ""
+}
+
+func (x *GetSomeInformationForTicketRes) GetFilmId() int32 {
+	if x != nil {
+		return x.FilmId
+	}
+	return 0
 }
 
 var File_showtime_proto protoreflect.FileDescriptor
 
 const file_showtime_proto_rawDesc = "" +
 	"\n" +
-	"\x0eshowtime.proto\x12\bshowtime\":\n" +
-	"\x18GetCinemaByShowtimeIdReq\x12\x1e\n" +
+	"\x0eshowtime.proto\x12\bshowtime\"Z\n" +
+	"\x1eGetSomeInformationForTicketReq\x12\x1e\n" +
 	"\n" +
 	"showtimeId\x18\x01 \x01(\x05R\n" +
-	"showtimeId\"^\n" +
-	"\x18GetCinemaByShowtimeIdRes\x12\x12\n" +
-	"\x04name\x18\x01 \x01(\tR\x04name\x12\x12\n" +
+	"showtimeId\x12\x18\n" +
+	"\aseatIds\x18\x02 \x03(\x05R\aseatIds\"\x9e\x01\n" +
+	"\x1eGetSomeInformationForTicketRes\x12\x1e\n" +
+	"\n" +
+	"cinemaName\x18\x01 \x01(\tR\n" +
+	"cinemaName\x12\x12\n" +
 	"\x04city\x18\x02 \x01(\tR\x04city\x12\x1a\n" +
-	"\blocation\x18\x03 \x01(\tR\blocation2k\n" +
-	"\bShowtime\x12_\n" +
-	"\x15GetCinemaByShowtimeId\x12\".showtime.GetCinemaByShowtimeIdReq\x1a\".showtime.GetCinemaByShowtimeIdResB\rZ\v./;showtimeb\x06proto3"
+	"\broomName\x18\x03 \x01(\tR\broomName\x12\x14\n" +
+	"\x05seats\x18\x04 \x01(\tR\x05seats\x12\x16\n" +
+	"\x06filmId\x18\x05 \x01(\x05R\x06filmId2}\n" +
+	"\bShowtime\x12q\n" +
+	"\x1bGetSomeInformationForTicket\x12(.showtime.GetSomeInformationForTicketReq\x1a(.showtime.GetSomeInformationForTicketResB\rZ\v./;showtimeb\x06proto3"
 
 var (
 	file_showtime_proto_rawDescOnce sync.Once
@@ -155,12 +184,12 @@ func file_showtime_proto_rawDescGZIP() []byte {
 
 var file_showtime_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
 var file_showtime_proto_goTypes = []any{
-	(*GetCinemaByShowtimeIdReq)(nil), // 0: showtime.GetCinemaByShowtimeIdReq
-	(*GetCinemaByShowtimeIdRes)(nil), // 1: showtime.GetCinemaByShowtimeIdRes
+	(*GetSomeInformationForTicketReq)(nil), // 0: showtime.GetSomeInformationForTicketReq
+	(*GetSomeInformationForTicketRes)(nil), // 1: showtime.GetSomeInformationForTicketRes
 }
 var file_showtime_proto_depIdxs = []int32{
-	0, // 0: showtime.Showtime.GetCinemaByShowtimeId:input_type -> showtime.GetCinemaByShowtimeIdReq
-	1, // 1: showtime.Showtime.GetCinemaByShowtimeId:output_type -> showtime.GetCinemaByShowtimeIdRes
+	0, // 0: showtime.Showtime.GetSomeInformationForTicket:input_type -> showtime.GetSomeInformationForTicketReq
+	1, // 1: showtime.Showtime.GetSomeInformationForTicket:output_type -> showtime.GetSomeInformationForTicketRes
 	1, // [1:2] is the sub-list for method output_type
 	0, // [0:1] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name

@@ -197,6 +197,94 @@ func (x *GetPriceOfFABRes) GetPrice() int32 {
 	return 0
 }
 
+type GetFABsByIdsReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	FABId         []int32                `protobuf:"varint,1,rep,packed,name=fABId,proto3" json:"fABId,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetFABsByIdsReq) Reset() {
+	*x = GetFABsByIdsReq{}
+	mi := &file_product_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetFABsByIdsReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetFABsByIdsReq) ProtoMessage() {}
+
+func (x *GetFABsByIdsReq) ProtoReflect() protoreflect.Message {
+	mi := &file_product_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetFABsByIdsReq.ProtoReflect.Descriptor instead.
+func (*GetFABsByIdsReq) Descriptor() ([]byte, []int) {
+	return file_product_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *GetFABsByIdsReq) GetFABId() []int32 {
+	if x != nil {
+		return x.FABId
+	}
+	return nil
+}
+
+type GetFABsByIdsRes struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Name          []string               `protobuf:"bytes,1,rep,name=name,proto3" json:"name,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetFABsByIdsRes) Reset() {
+	*x = GetFABsByIdsRes{}
+	mi := &file_product_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetFABsByIdsRes) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetFABsByIdsRes) ProtoMessage() {}
+
+func (x *GetFABsByIdsRes) ProtoReflect() protoreflect.Message {
+	mi := &file_product_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetFABsByIdsRes.ProtoReflect.Descriptor instead.
+func (*GetFABsByIdsRes) Descriptor() ([]byte, []int) {
+	return file_product_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *GetFABsByIdsRes) GetName() []string {
+	if x != nil {
+		return x.Name
+	}
+	return nil
+}
+
 type CheckFABExistReq struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	FABId         int32                  `protobuf:"varint,1,opt,name=fABId,proto3" json:"fABId,omitempty"`
@@ -206,7 +294,7 @@ type CheckFABExistReq struct {
 
 func (x *CheckFABExistReq) Reset() {
 	*x = CheckFABExistReq{}
-	mi := &file_product_proto_msgTypes[4]
+	mi := &file_product_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -218,7 +306,7 @@ func (x *CheckFABExistReq) String() string {
 func (*CheckFABExistReq) ProtoMessage() {}
 
 func (x *CheckFABExistReq) ProtoReflect() protoreflect.Message {
-	mi := &file_product_proto_msgTypes[4]
+	mi := &file_product_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -231,7 +319,7 @@ func (x *CheckFABExistReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CheckFABExistReq.ProtoReflect.Descriptor instead.
 func (*CheckFABExistReq) Descriptor() ([]byte, []int) {
-	return file_product_proto_rawDescGZIP(), []int{4}
+	return file_product_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *CheckFABExistReq) GetFABId() int32 {
@@ -250,7 +338,7 @@ type CheckFABExistRes struct {
 
 func (x *CheckFABExistRes) Reset() {
 	*x = CheckFABExistRes{}
-	mi := &file_product_proto_msgTypes[5]
+	mi := &file_product_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -262,7 +350,7 @@ func (x *CheckFABExistRes) String() string {
 func (*CheckFABExistRes) ProtoMessage() {}
 
 func (x *CheckFABExistRes) ProtoReflect() protoreflect.Message {
-	mi := &file_product_proto_msgTypes[5]
+	mi := &file_product_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -275,7 +363,7 @@ func (x *CheckFABExistRes) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CheckFABExistRes.ProtoReflect.Descriptor instead.
 func (*CheckFABExistRes) Descriptor() ([]byte, []int) {
-	return file_product_proto_rawDescGZIP(), []int{5}
+	return file_product_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *CheckFABExistRes) GetResponseMessage() string {
@@ -294,7 +382,7 @@ type GetFilmReq struct {
 
 func (x *GetFilmReq) Reset() {
 	*x = GetFilmReq{}
-	mi := &file_product_proto_msgTypes[6]
+	mi := &file_product_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -306,7 +394,7 @@ func (x *GetFilmReq) String() string {
 func (*GetFilmReq) ProtoMessage() {}
 
 func (x *GetFilmReq) ProtoReflect() protoreflect.Message {
-	mi := &file_product_proto_msgTypes[6]
+	mi := &file_product_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -319,7 +407,7 @@ func (x *GetFilmReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetFilmReq.ProtoReflect.Descriptor instead.
 func (*GetFilmReq) Descriptor() ([]byte, []int) {
-	return file_product_proto_rawDescGZIP(), []int{6}
+	return file_product_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *GetFilmReq) GetFilmId() int32 {
@@ -344,7 +432,7 @@ type GetFilmRes struct {
 
 func (x *GetFilmRes) Reset() {
 	*x = GetFilmRes{}
-	mi := &file_product_proto_msgTypes[7]
+	mi := &file_product_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -356,7 +444,7 @@ func (x *GetFilmRes) String() string {
 func (*GetFilmRes) ProtoMessage() {}
 
 func (x *GetFilmRes) ProtoReflect() protoreflect.Message {
-	mi := &file_product_proto_msgTypes[7]
+	mi := &file_product_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -369,7 +457,7 @@ func (x *GetFilmRes) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetFilmRes.ProtoReflect.Descriptor instead.
 func (*GetFilmRes) Descriptor() ([]byte, []int) {
-	return file_product_proto_rawDescGZIP(), []int{7}
+	return file_product_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *GetFilmRes) GetFilmId() int32 {
@@ -433,7 +521,11 @@ const file_product_proto_rawDesc = "" +
 	"\x10GetPriceOfFABReq\x12\x14\n" +
 	"\x05fABId\x18\x01 \x01(\x05R\x05fABId\"(\n" +
 	"\x10GetPriceOfFABRes\x12\x14\n" +
-	"\x05price\x18\x01 \x01(\x05R\x05price\"(\n" +
+	"\x05price\x18\x01 \x01(\x05R\x05price\"'\n" +
+	"\x0fGetFABsByIdsReq\x12\x14\n" +
+	"\x05fABId\x18\x01 \x03(\x05R\x05fABId\"%\n" +
+	"\x0fGetFABsByIdsRes\x12\x12\n" +
+	"\x04name\x18\x01 \x03(\tR\x04name\"(\n" +
 	"\x10CheckFABExistReq\x12\x14\n" +
 	"\x05fABId\x18\x01 \x01(\x05R\x05fABId\"<\n" +
 	"\x10CheckFABExistRes\x12(\n" +
@@ -449,10 +541,11 @@ const file_product_proto_rawDesc = "" +
 	"\frelease_date\x18\x04 \x01(\tR\vreleaseDate\x12\x1c\n" +
 	"\tposterUrl\x18\x05 \x01(\tR\tposterUrl\x12\x16\n" +
 	"\x06genres\x18\x06 \x01(\tR\x06genres\x12\x1a\n" +
-	"\bduration\x18\a \x01(\tR\bduration2\x99\x02\n" +
+	"\bduration\x18\a \x01(\tR\bduration2\xdd\x02\n" +
 	"\aProduct\x12K\n" +
 	"\x0fGetFilmDuration\x12\x1b.product.GetFilmDurationReq\x1a\x1b.product.GetFilmDurationRes\x12E\n" +
-	"\rGetPriceOfFAB\x12\x19.product.GetPriceOfFABReq\x1a\x19.product.GetPriceOfFABRes\x12E\n" +
+	"\rGetPriceOfFAB\x12\x19.product.GetPriceOfFABReq\x1a\x19.product.GetPriceOfFABRes\x12B\n" +
+	"\fGetFABsByIds\x12\x18.product.GetFABsByIdsReq\x1a\x18.product.GetFABsByIdsRes\x12E\n" +
 	"\rCheckFABExist\x12\x19.product.CheckFABExistReq\x1a\x19.product.CheckFABExistRes\x123\n" +
 	"\aGetFilm\x12\x13.product.GetFilmReq\x1a\x13.product.GetFilmResB\fZ\n" +
 	"./;productb\x06proto3"
@@ -469,28 +562,32 @@ func file_product_proto_rawDescGZIP() []byte {
 	return file_product_proto_rawDescData
 }
 
-var file_product_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
+var file_product_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
 var file_product_proto_goTypes = []any{
 	(*GetFilmDurationReq)(nil), // 0: product.GetFilmDurationReq
 	(*GetFilmDurationRes)(nil), // 1: product.GetFilmDurationRes
 	(*GetPriceOfFABReq)(nil),   // 2: product.GetPriceOfFABReq
 	(*GetPriceOfFABRes)(nil),   // 3: product.GetPriceOfFABRes
-	(*CheckFABExistReq)(nil),   // 4: product.CheckFABExistReq
-	(*CheckFABExistRes)(nil),   // 5: product.CheckFABExistRes
-	(*GetFilmReq)(nil),         // 6: product.GetFilmReq
-	(*GetFilmRes)(nil),         // 7: product.GetFilmRes
+	(*GetFABsByIdsReq)(nil),    // 4: product.GetFABsByIdsReq
+	(*GetFABsByIdsRes)(nil),    // 5: product.GetFABsByIdsRes
+	(*CheckFABExistReq)(nil),   // 6: product.CheckFABExistReq
+	(*CheckFABExistRes)(nil),   // 7: product.CheckFABExistRes
+	(*GetFilmReq)(nil),         // 8: product.GetFilmReq
+	(*GetFilmRes)(nil),         // 9: product.GetFilmRes
 }
 var file_product_proto_depIdxs = []int32{
 	0, // 0: product.Product.GetFilmDuration:input_type -> product.GetFilmDurationReq
 	2, // 1: product.Product.GetPriceOfFAB:input_type -> product.GetPriceOfFABReq
-	4, // 2: product.Product.CheckFABExist:input_type -> product.CheckFABExistReq
-	6, // 3: product.Product.GetFilm:input_type -> product.GetFilmReq
-	1, // 4: product.Product.GetFilmDuration:output_type -> product.GetFilmDurationRes
-	3, // 5: product.Product.GetPriceOfFAB:output_type -> product.GetPriceOfFABRes
-	5, // 6: product.Product.CheckFABExist:output_type -> product.CheckFABExistRes
-	7, // 7: product.Product.GetFilm:output_type -> product.GetFilmRes
-	4, // [4:8] is the sub-list for method output_type
-	0, // [0:4] is the sub-list for method input_type
+	4, // 2: product.Product.GetFABsByIds:input_type -> product.GetFABsByIdsReq
+	6, // 3: product.Product.CheckFABExist:input_type -> product.CheckFABExistReq
+	8, // 4: product.Product.GetFilm:input_type -> product.GetFilmReq
+	1, // 5: product.Product.GetFilmDuration:output_type -> product.GetFilmDurationRes
+	3, // 6: product.Product.GetPriceOfFAB:output_type -> product.GetPriceOfFABRes
+	5, // 7: product.Product.GetFABsByIds:output_type -> product.GetFABsByIdsRes
+	7, // 8: product.Product.CheckFABExist:output_type -> product.CheckFABExistRes
+	9, // 9: product.Product.GetFilm:output_type -> product.GetFilmRes
+	5, // [5:10] is the sub-list for method output_type
+	0, // [0:5] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
 	0, // [0:0] is the sub-list for extension extendee
 	0, // [0:0] is the sub-list for field type_name
@@ -507,7 +604,7 @@ func file_product_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_product_proto_rawDesc), len(file_product_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   8,
+			NumMessages:   10,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
